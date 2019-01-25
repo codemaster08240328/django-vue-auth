@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='my_project/spa.html'), name='home'),
     path('auth/obtain_token/', obtain_jwt_token),
     path('auth/refresh_token/', refresh_jwt_token),
 ]
